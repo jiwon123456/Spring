@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <title>doBInsert</title>
+    <title>bDelete</title>
     <style>
         *{
             margin: 0;

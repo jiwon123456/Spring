@@ -80,6 +80,81 @@ public class BController {
 		return "board/doBInsert";
 	}//
 	
+	@PostMapping("bDelete")//게시글 삭제
+	public String bDelete(@RequestParam(defaultValue = "1") int bno ,Model model) {
+		System.out.println("BController bDelete bno : "+bno);
+		
+		bService.bDelete(bno);
+		
+		return "board/bDelete";
+	}//bDelete
+	
+	@PostMapping("bUpdate") //게시글 수정페이지 보기
+	public String bUpdate(@RequestParam(defaultValue = "1") int bno ,Model model) {
+		Map<String, Object> map = bService.selectOne(bno); //게시글 1개 가져오기
+		model.addAttribute("map", map);
+		return "board/bUpdate";
+	}//bUpdate
+
+
+	@PostMapping("doBUpdate") //게시글 수정저장
+	public String doBUpdate(BoardDto bdto,@RequestPart MultipartFile files,Model model) throws  IOException {
+		//bdto -> bfile
+		System.out.println("bController doBupdate bno : "+bdto.getBno());
+		String orgName = "";
+		String newName = "";
+		if(!files.isEmpty()) {
+			orgName = files.getOriginalFilename();
+			long time = System.currentTimeMillis();
+			newName = time + "_" + orgName;
+			newName = String.format("%s_%d", orgName,time);
+			String upload = "c:/upload/"; //파일저장 위치
+			File f = new File(upload+newName); //파일 생성
+			files.transferTo(f); //파일전송
+			bdto.setBfile(newName); //bdto파일이름 저장
+		}
+		
+		//db전송
+		bService.doBUpdate(bdto); //파일업로드가 없으면 기존 파일이르 그대로 사용
+		
+		return "board/doBUpdate";
+	}//doBUpdate
+
+	@PostMapping("bReply") //답변달기페이지 보기
+	public String bReply(@RequestParam(defaultValue = "1") int bno ,Model model) {
+		Map<String, Object> map = bService.selectOne(bno); //게시글 1개 가져오기
+		model.addAttribute("map", map);
+		return "board/bReply";
+	}//bReply
+	
+	//답변달기 저장
+		@PostMapping("doBReply") 
+		public String doBReply(BoardDto bdto, @RequestPart MultipartFile files, 
+				Model model) throws IOException {
+			//답변달기 - bgroup,bstep,bindent 값은 bdto에 담겨져 있음.
+			//파일첨부의 파일이름
+			if(!files.isEmpty()) { //파일첨부를 했으면
+				String orgName = files.getOriginalFilename();
+				System.out.println("BController doBReply 파일첨부 이름 : "+ orgName);
+				long time = System.currentTimeMillis();
+				String newName = time + "_" + orgName; //중복방지를 위해 새로운 이름변경
+				String upload = "c:/upload/"; //파일업로드 위치
+				File f = new File(upload+newName);
+				files.transferTo(f); //파일을 저장위치에 저장시킴
+				bdto.setBfile(newName); //파일이름을 BoardDto에 저장시킴
+				
+			}else { //파일첨부를 안했으면
+				bdto.setBfile("");
+				System.out.println("doBReply 파일첨부가 없습니다");
+			}
+			
+			//bd로 전송
+			bService.doBReply(bdto);
+			
+			return "board/doBReply";
+		}//
+	
+	
 	
 	//-------------------------------------------------
 	//------------------- 다중업로드 -------------------

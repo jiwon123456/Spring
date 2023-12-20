@@ -16,7 +16,7 @@
 </head>
 <body>
 <section>
-    <h1>NOTICE</h1>
+    <h1><a href="/" >NOTICE</a></h1>
     <div class="wrapper">
       <form action="/search" name="search" method="post">
         <select name="category" id="category">
@@ -53,7 +53,10 @@
       <tr>
         <td><span class="table-notice">${bdto.bno}</span></td>
         <td class="table-title">
-        <a href="bView?bno=${bdto.bno}">${bdto.btitle}</a>
+        <a href="bView?bno=${bdto.bno}">
+        	<c:forEach var="i" begin="1" end="${bdto.bindent}" step="1" >▶</c:forEach>
+	        ${bdto.btitle}
+        </a>
         </td>
         <td><fmt:formatDate value="${bdto.bdate}" pattern="YYYY-MM-dd"/></td>
         <td>${bdto.bhit}</td>

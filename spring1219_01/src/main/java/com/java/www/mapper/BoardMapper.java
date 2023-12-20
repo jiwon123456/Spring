@@ -21,7 +21,22 @@ public interface BoardMapper {
 	//게시글1개 다음글
 	BoardDto selectOneNext(int bno);
 	
+	//조회수 1증가
+	void bhitUp(int bno);
+	
 	//글쓰기 저장
 	int bInsert(BoardDto bdto);
+
+	//게시글 삭제
+	int bDelete(int bno);
+
+	//게시글수정 저장
+	int doBUpdate(BoardDto bdto);
+
+	// 답변달기 저장
+	//1.다른게시글 bstep 1증가
+	void bstepUp(BoardDto bdto);
+	int doBReply(BoardDto bdto);
+
 
 }
