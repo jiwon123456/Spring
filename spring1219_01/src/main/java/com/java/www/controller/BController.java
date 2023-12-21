@@ -26,12 +26,32 @@ public class BController {
 	@Autowired
 	BService bService;
 	
-	@GetMapping("bList")//게시글 전체 가져오기
-	public String bList(Model model) {
+	@GetMapping("search")//게시글 검색
+	public String search(@RequestParam(defaultValue = "1")int page,
+			@RequestParam(required = false)String category,
+			@RequestParam(required = false)String searchWord,Model model) {
+				
+		System.out.println("BController search category : "+category);
+		System.out.println("BController search searchWord : "+searchWord);
+				
 		//db에서 가져오기
-		ArrayList<BoardDto> list = bService.selectAll();
+		Map<String, Object> map = bService.selectSearch(page,category,searchWord);
 		//model 저장
-		model.addAttribute("list", list);
+		model.addAttribute("map", map);
+		System.out.println("게시글 총개수 : "+(int)map.get("countAll"));
+		
+		return "board/bList";
+	}//bList
+
+	@GetMapping("bList")//게시글 전체 가져오기
+	public String bList(@RequestParam(defaultValue = "1")int page,
+			@RequestParam(required = false)String category,
+			@RequestParam(required = false)String searchWord,Model model) {
+		//db에서 가져오기
+		Map<String, Object> map = bService.selectAll(page,category,searchWord);
+		//model 저장
+		model.addAttribute("map", map);
+		System.out.println("list개수 : "+(int)map.get("countAll"));
 		
 		return "board/bList";
 	}//bList
@@ -200,11 +220,13 @@ public class BController {
 	}
 	
 	@GetMapping("bList2")//게시글 전체 가져오기
-	public String bList2(Model model) {
+	public String bList2(@RequestParam(defaultValue = "1")int page,
+			@RequestParam(required = false)String category,
+			@RequestParam(required = false)String searchWord,Model model) {
 		//db에서 가져오기
-		ArrayList<BoardDto> list = bService.selectAll();
+		Map<String, Object> map = bService.selectAll(page,category,searchWord);
 		//model 저장
-		model.addAttribute("list", list);
+		model.addAttribute("map", map);
 		
 		return "board/bList2";
 	}//bList
