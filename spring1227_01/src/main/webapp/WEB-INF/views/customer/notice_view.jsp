@@ -276,8 +276,10 @@ $(document).ready(function() {
 						  $(".replyBtn").click(function(){
 							 alert("댓글을 저장합니다."); 
 							 //alert("bno : "+bno);
+							 //alert("댓글 수 : "+$(".cCount").text());
 							 let cpw = $(".replynum").val(); 
 							 let ccontent = $(".replyType").val(); 
+							 let cCount = Number($(".cCount").text());
 							 
 							 //ajax
 							 $.ajax({
@@ -303,6 +305,7 @@ $(document).ready(function() {
 									hdata += '</ul>';
 									
 									$(".replyBox").prepend(hdata); //상단에 추가 appen= 가장 하단에 추가
+									$(".cCount").text(cCount+1); //댓글 1증가
 									
 									//글쓴 내용 지우기
 									$(".replynum").val(""); 
@@ -321,6 +324,7 @@ $(document).ready(function() {
 							 alert("부모의 부모 id : "+$(this).parent().parent().attr("id"));
 							 //alert("부모의 부모 id : "+$(this).closest("ul").attr("id"));
 							 let cno = $(this).parent().parent().attr("id");
+							 let cCount = Number($(".cCount").text());
 							 if(confirm("댓글을 삭제하시겠습니까?")){
 								 //ajax 댓글삭제
 								 $.ajax({
@@ -332,6 +336,7 @@ $(document).ready(function() {
 											alert("성공");
 											console.log(data);
 											$("#"+cno).remove();
+											$(".cCount").text(cCount-1); //댓글 1개 감소
 										},
 										error:function(){
 											alert("실패");
@@ -446,7 +451,7 @@ $(document).ready(function() {
 					<div class="replyWrite">
 						<ul>
 							<li class="in">
-								<p class="txt">총 <span class="orange">${map.bCommentlist.size() }</span> 개의 댓글이 달려있습니다.</p>
+								<p class="txt">총 <span class="orange cCount">${map.bCommentlist.size()}</span> 개의 댓글이 달려있습니다.</p>
 								<p class="password">비밀번호&nbsp;&nbsp;<input type="password" class="replynum" /></p>
 								<textarea class="replyType"></textarea>
 							</li>
