@@ -9,7 +9,7 @@ import com.java.www.dto.BoardDto;
 public interface BService {
 
 	//공지사항 전체가져오기
-	List<BoardDto> selectAll();
+	Map<String, Object> selectAll(int page, String searchWord);
 
 	//게시글 1개 가져오기
 	Map<String, Object> selectOne(int bno);

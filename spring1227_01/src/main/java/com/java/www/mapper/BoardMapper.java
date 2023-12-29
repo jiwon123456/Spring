@@ -11,7 +11,7 @@ import com.java.www.dto.BoardDto;
 public interface BoardMapper {
 
 	//공지사항 전체가져오기
-	List<BoardDto> selectAll();
+	List<BoardDto> selectAll(int startRow, int endRow, String searchWord);
 
 	//게시글 1개 가져오기
 	BoardDto selectOne(int bno);
@@ -30,6 +30,9 @@ public interface BoardMapper {
 
 	//댓글 수정저장
 	void BCommentUpdate(BCommentDto cdto);
+
+	//게시글개수
+	int selectcountAll(String searchWord);
 
 
 }

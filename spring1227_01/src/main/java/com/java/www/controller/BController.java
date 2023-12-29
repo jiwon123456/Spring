@@ -27,12 +27,12 @@ public class BController {
 	@Autowired HttpSession session;
 	
 	@GetMapping("notice")
-	public String notice(Model model) {
-		//page 가지고 와야 함.
+	public String notice(@RequestParam (defaultValue = "1")int page,
+			@RequestParam(required = false)String searchWord,Model model) {
 		//service연결 - list
-		List<BoardDto> list = bService.selectAll();
+		Map<String, Object> map = bService.selectAll(page,searchWord);
 		//model전송
-		model.addAttribute("list",list);
+		model.addAttribute("map",map);
 		return "customer/notice";
 	}
 	

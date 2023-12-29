@@ -164,7 +164,7 @@ $(document).ready(function() {
 				<ul>
 					<li><a href="/layout/chart">차트EVENT</a></li>
 					<li><a href="customer/notice">CUSTOMER</a></li>
-					<li><a href="#">COMMUNITY</a></li>
+					<li><a href="/layout/publicData">COMMUNITY</a></li>
 				</ul>
 			</div>
 			<div id="snb">
@@ -179,8 +179,8 @@ $(document).ready(function() {
 					</c:if>
 					
 					
-					<li><a href="#">MY PAGE</a></li>
-					<li><a href="#">CART</a></li>
+					<li><a href="layout/bikeData">bike MY PAGE</a></li>
+					<li><a href="layout/screenData">스크린CART</a></li>
 				</ul>
 
 				<div id="search">
