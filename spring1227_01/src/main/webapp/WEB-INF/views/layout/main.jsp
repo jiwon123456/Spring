@@ -16,7 +16,7 @@
 <link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
-<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="../js/top_navi.js"></script>
 <script type="text/javascript" src="../js/main.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
@@ -171,7 +171,7 @@ $(document).ready(function() {
 				<ul>
 					<c:if test="${session_id == null}">
 						<li><a href="/member/login">LOGIN</a></li>
-						<li><a href="#">JOIN</a></li>
+						<li><a href="/member/step01">JOIN</a></li>
 					</c:if>
 					<c:if test="${session_id != null}">
 						<li><a href="/member/logout">LOGOUT</a></li>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.www.dto.MemberDto;
+import com.java.www.service.EmailService;
 import com.java.www.service.MService;
 
 import jakarta.servlet.http.HttpSession;
@@ -19,6 +20,7 @@ public class MController {
 
 	@Autowired MService mService;
 	@Autowired HttpSession session;
+	@Autowired EmailService emailService;
 	
 	@GetMapping("login")
 	public String login() {
@@ -60,4 +62,42 @@ public class MController {
 		System.out.println("MController login result : "+result);
 		return "member/doLogin";
 	}
+	
+	@GetMapping("idsearch")
+	public String idsearch() {
+		return "member/idsearch";
+	}
+	
+	@GetMapping("id")
+	public String id() {
+		return "member/id";
+	}
+	
+	@PostMapping("id")
+	@ResponseBody
+	public String id(MemberDto mdto) {
+		//service 연결
+		int result = mService.id(mdto);
+		System.out.println("MController id result : "+result);
+		
+		return result+"";
+	}
+	
+	@GetMapping("step01")
+	public String step01() {
+		return "member/step01";
+	}
+
+	@PostMapping("email")
+	@ResponseBody
+	public String email(String email) {
+		System.out.println("MController email : "+email);
+		
+		//service연결
+		String result = emailService.mailSend(email);
+		
+		
+		return result;
+	}
+	
 }

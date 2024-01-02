@@ -8,6 +8,10 @@
      select * from member where id=#{id} and pw=#{pw}
   </select>
   
+  <select id="id" resultType="com.java.www.dto.MemberDto">
+     select * from member2 where name=#{name} and email=#{email}
+  </select>
+  
    
    
    

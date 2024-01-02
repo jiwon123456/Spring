@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href="../css/reset.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/layout.css?v=Y" />
 <link rel="stylesheet" type="text/css" href="../css/content.css?v=Y" />
-<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="../js/top_navi.js"></script>
 <script type="text/javascript" src="../js/left_navi.js"></script>
 <script type="text/javascript" src="../js/main.js"></script>
@@ -189,7 +194,7 @@ $(document).ready(function() {
 			<ol>
 				<li><a href="#">HOME</a></li>
 				<li><a href="#">MEMBERSHIP</a></li>
-				<li class="last">회원가입</li>
+				<li class="last">아이디/비밀번호 찾기</li>
 			</ol>
 		</div>
 		
@@ -204,54 +209,74 @@ $(document).ready(function() {
 					<li><a href="#" id="leftNavi5">개인정보<span>취급방침</span></a></li>
 					<li class="last"><a href="#" id="leftNavi6">이메일무단<span>수집거부</span></a></li>
 				</ul>			
-			</div><script type="text/javascript">initSubmenu(2,0);</script>
-
-
+			</div><script type="text/javascript">initSubmenu(3,0);</script>
+			<script>
+				$(function(){
+					$("#idbtn").click(function(){
+						let name = $("#name").val();
+						let email = $("#email").val();
+			            $.ajax({
+			            	url:"/member/id",
+							type:"post",
+							data:{"name":name,"email":email},
+							dataType:"text",
+							success:function(data){
+								alert("성공");
+								console.log(data);
+								if(data == 1){
+									alert("아이디가 확인되었습니다.")
+									location.href="/member/id";
+									
+								}else{
+									alert("회원정보를 찾지 못했습니다. 다시 시도 해주세요.");
+									$("#name").val("");
+									$("#name").focus();
+									
+								}
+							},
+							error:function(){
+								alert("실패");
+							}
+			            	
+			            });//ajax 		
+						
+					});//click(idbtn)
+					
+				});//jquery	
+			</script>
+				
 			<!-- contents -->
 			<div id="contents">
 				<div id="member">
-					<h2><strong>회원가입</strong><span>회원으로 가입하시면 보다 더 다양한 혜택을 누리실 수 있습니다.</span></h2>
-					
-					<!-- STEP -->
-					<div class="stepWrap">
-						<div class="step stepon">
-							<p class="web">STEP 01</p>
-							<p class="txt">실명확인</p>
-							<p class="ck"><img src="../images/bg/bg_step.png" alt="현재위치" /></p>
-						</div>
+					<h2><strong>아이디/비밀번호 찾기</strong><span>회원님께서 가입하신 아이디와 비밀번호를 찾아드립니다.</span></h2>
+					<h3>아이디 찾기</h3>
+					<div class="informbox">
+						<div class="inform">
+							<ul>
+								<li><input type="text" class="nameType" name="name" id="name" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='nameType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
+								<li><input type="password" class="emailType" name="email" id="email" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='emailType'}else {this.className='mfocusnot'}" style="ime-mode:inactive;" /></li>
+							</ul>
 
-						<div class="step">
-							<p class="web">STEP 02</p>
-							<p class="txt">약관 동의</p>
-						</div>
-
-						<div class="step">
-							<p class="web">STEP 03</p>
-							<p class="txt"><span>회원정보</span> <span>입력</span></p>
-						</div>
-
-						<div class="step">
-							<p class="web">STEP 04</p>
-							<p class="txt"><span>회원가입</span> <span>완료</span></p>
+							<div class="btn"><a style="cursor: pointer;" class="gbtn" id="idbtn">아이디 찾기</a></div>
 						</div>
 					</div>
-					<!-- //STEP -->
-						
 
-					<div class="alertBox">
-						<ul>
-							<li>회원님의 실명확인 및 가입 여부를 확인하는 절차입니다.</li>
-							<li>회원님의 개인 정보 보호를 위해 실명확인을 실시하고 있습니다.</li>
-						</ul>
+
+
+					<h3>비밀번호 찾기</h3>
+					<div class="informbox">
+						<div class="inform">
+							<ul>
+								<li><input type="text" class="loginType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='loginType'}else {this.className='mfocusnot'}" /></li>
+								<li><input type="text" class="emailType" onfocus="this.className='mfocus'" onblur="if (this.value.length==0) {this.className='emailType'}else {this.className='mfocusnot'}" /></li>
+							</ul>
+
+							<div class="btn"><a href="/member/id" class="gbtn">비밀번호 찾기</a></div>
+						</div>
 					</div>
 
 
-					<!-- Btn Area -->
-					<div class="btnAreaCenter">
-						<a href="#" class="gbtn">휴대폰인증</a></li>
-					</div>
-					<!-- //Btn Area -->
-
+					<p class="alert">쟈뎅 온라인 쇼핑몰에서는 2012년 8월 18일로 시행되는 정보통신망 이용 촉진 및 정보 보호 등에 관한 법률 “주민등록번호의 <span>사용 제한”과 관련하여 주민등록번호를 수집하지 않습니다.</span></p>
 
 				</div>
 			</div>

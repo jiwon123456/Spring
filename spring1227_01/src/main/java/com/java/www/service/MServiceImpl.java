@@ -28,6 +28,19 @@ public class MServiceImpl implements MService {
 		return result;
 	}
 
+	//아이디 찾기
+	@Override
+	public int id(MemberDto mdto) {
+		int result = 0;
+		//mapper연결
+		MemberDto memberDto = memberMapper.id(mdto);
+		if(memberDto != null) {
+			session.setAttribute("seesion_id", memberDto.getId());
+			result = 1;
+		}
+		return result;
+	}
+
 	
 	
 }

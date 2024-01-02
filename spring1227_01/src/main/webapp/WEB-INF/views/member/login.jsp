@@ -272,7 +272,7 @@ $(document).ready(function() {
 	
 								<div class="point">
 									<p>아이디와 비밀번호를 잊으셨나요?</p>
-									<a href="#" class="nbtn">아이디/비밀번호 찾기</a>
+									<a href="/member/idsearch" class="nbtn">아이디/비밀번호 찾기</a>
 								</div>
 							</div>
 						</div>
