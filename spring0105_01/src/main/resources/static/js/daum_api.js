@@ -80,6 +80,5 @@ function screen_data(){
 				                alert("실패");
 				            }
 				            
-				            
 				        });//ajax
 				}//screen_data
