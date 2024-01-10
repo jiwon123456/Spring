@@ -82,7 +82,7 @@
 
     <ul class="login-icons">
       <li class="phone"></li>
-      <a href="https://kauth.kakao.com/oauth/authorize?client_id=1259f26fc402885a15030cc5d4a862f5_uri=http://localhost:8000/kakao/oauth&response_type=code" style="text-decoration: none;">
+      <a href="https://kauth.kakao.com/oauth/authorize?client_id=78f665db623c4e5d8cbfdce2b99610cb&redirect_uri=http://localhost:8000/kakao/oauth&response_type=code" style="text-decoration: none;">
       	<li class="kakao"></li>
       </a>
       <li class="naver"></li>

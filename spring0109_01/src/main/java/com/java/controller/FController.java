@@ -7,6 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +37,53 @@ public class FController {
 		return "login";
 	}
 
-	@GetMapping("kakao/oauth")
+	@GetMapping("logout")
+	public String logout(Model model) {
+		
+		//accesss_token 가져오기
+		System.out.println(	"logout session token : "+session.getAttribute("session_token"));
+		
+		//2. logout token키 요청
+		String logoutUrl = "https://kapi.kakao.com/v1/user/logout";
+	    //header
+		String content_type = "application/x-www-form-urlencoded;charset=utf-8";
+		String authorization = "Bearer "+session.getAttribute("session_token");
+		
+		//url전송
+		RestTemplate rt = new RestTemplate();
+		//header 생성
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content_type", content_type);
+		headers.add("Authorization", authorization);
+		
+		//header
+		HttpEntity<MultiValueMap<String, String>> logoutRequest = new HttpEntity<>(headers);
+		
+		//전송url,전송방식:post,데이터
+		ResponseEntity<String> response = rt.exchange(logoutUrl, HttpMethod.POST,logoutRequest,String.class);
+		
+		System.out.println("토큰요청값 logout response : "+response);
+		System.out.println("토큰요청값 body : "+response.getBody());
+		
+		//3-2. json 데이터를 java객체로 변환
+		ObjectMapper objectMapper = new ObjectMapper();
+		//tokenDto객체
+		LogoutDto logoutDto = null;
+		try {
+			logoutDto = objectMapper.readValue(response.getBody(), LogoutDto.class);
+		} catch (Exception e) {e.printStackTrace();} 
+		System.out.println("로그아웃값  id : "+logoutDto.getId());
+		
+		//model
+		model.addAttribute("result", logoutDto.getId());
+		
+		//session종료
+		session.invalidate();
+		
+		return "logout";
+	}
+
+	@GetMapping("kakao/oauth") //카카오로그인
 	@ResponseBody
 	public String oauth(String code) {
 		//1. code값 리턴
@@ -121,6 +168,7 @@ public class FController {
 			System.out.println("카카오 로그인이 완료되었습니다.");
 			session.setAttribute("session_id", kakaoDto.getId());
 			session.setAttribute("session_name", kakaoDto.getProperties().nickname);
+			session.setAttribute("session_token", tokenDto.getAccess_token());
 			targetUrl = "redirect:/";
 		}else {
 			System.out.println("카카오 로그인 에러");
