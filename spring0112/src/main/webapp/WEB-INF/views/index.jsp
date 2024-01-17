@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 <title>BootStrap 01</title>
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -143,9 +144,9 @@ $(function(){
 
         <div class="post">
             <div class="post_profile-image">
-                <img src="images/menu01.png" alt="profile">
-
-            </div>
+					<div class="user">
+					</div>
+				</div>
 
             <div class="post_body">
                 <div class="post_header">
@@ -158,56 +159,23 @@ $(function(){
                     </div>
 
                     <div class="post_header-discription">
-                        <p>Java 18 is now available! #Java18 #JDK18 #openjdk </p>
-                        <br>
-                        <p>Download now: https://social.ora.cl/6012KoqQ0 <br>
-                            Release notes: https://social.ora.cl/6013KoqQF <br>
-                            API Javadoc: https://social.ora.cl/6015KoqQN <br>
-                            Features: https://social.ora.cl/6016KoqQ4 <br>
-                            </p>
+                        <p>
+                           <strong>lets_be_next</strong> 님이 회원님을
+						   <br>
+						   <div class="name">
+						   	팔로우하기 시작했습니다.
+						   </div>
+						   <button class="followBtn">팔로우</button>
+                       </p>
                     </div>
-                    
                 </div>
-                <div class="container-fluid">
-				  <div class="row row-cols-auto">
-				    <div class="col-md-auto">
-				       <img src="images/post-image.jpeg"  class="rounded " alt="java18" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="images/post-image.jpeg" >
-				    </div>
-				    <div class="col-md-auto">
-				       <img src="images/post-image.jpeg" class="rounded " alt="java18" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="images/post-image.jpeg" >
-				    </div>
-				 </div>
-				 
-				 <div class="row row-cols-auto">
-				    <div class="col-md-auto">
-				       <img src="images/post-image.jpeg"  class="rounded " alt="java18" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="images/post-image.jpeg" >
-				    </div>
-				    <div class="col-md-auto">
-				       <img src="images/post-image.jpeg" class="rounded " alt="java18" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="images/post-image.jpeg" >
-				    </div>
-				 </div>
-               </div>
-
-                <div class="post_footer">
-
-                    <span class="material-icons">chat</span>
-                    <span class="material-icons">repeat</span>
-                    <span class="material-icons">favorite_border</span>
-                    <span class="material-icons">bar_chart</span>
-                    
-
-                </div>
-
             </div>
-
         </div>
-        
         <div class="post">
             <div class="post_profile-image">
-                <img src="images/menu01.png" alt="java-logo">
-
-            </div>
-
+					<div class="user">
+					</div>
+				</div>
             <div class="post_body">
                 <div class="post_header">
                     <div class="post_header-text">
@@ -219,39 +187,24 @@ $(function(){
                     </div>
 
                     <div class="post_header-discription">
-                        <p>Java 18 is now available! #Java18 #JDK18 #openjdk </p>
-                        <br>
-                        <p>Download now: https://social.ora.cl/6012KoqQ0 <br>
-                            Release notes: https://social.ora.cl/6013KoqQF <br>
-                            API Javadoc: https://social.ora.cl/6015KoqQN <br>
-                            Features: https://social.ora.cl/6016KoqQ4 <br>
-                            </p>
+                        <p>
+                           <strong>lets_be_next</strong> 님이 회원님을
+						   <br>
+						   <div class="name">
+						   	팔로우하기 시작했습니다.
+						   </div>
+						   <button class="followBtn">팔로우</button>
+						   <i class="bi bi-circle-fill"></i>
+                       </p>
                     </div>
-                    
                 </div>
-                <img src="images/post-image.jpeg" alt="java18">
-
-                <div class="post_footer">
-
-                    <span class="material-icons">chat</span>
-                    <span class="material-icons">repeat</span>
-                    <span class="material-icons">favorite_border</span>
-                    <span class="material-icons">file_upload</span>
-                    
-
-                </div>
-
             </div>
-
         </div>
-        
-        
         <div class="post">
             <div class="post_profile-image">
-                <img src="menu01.png" alt="java-logo">
-
-            </div>
-
+					<div class="user">
+					</div>
+				</div>
             <div class="post_body">
                 <div class="post_header">
                     <div class="post_header-text">
@@ -263,81 +216,22 @@ $(function(){
                     </div>
 
                     <div class="post_header-discription">
-                        <p>Java 18 is now available! #Java18 #JDK18 #openjdk </p>
-                        <br>
-                        <p>Download now: https://social.ora.cl/6012KoqQ0 <br>
-                            Release notes: https://social.ora.cl/6013KoqQF <br>
-                            API Javadoc: https://social.ora.cl/6015KoqQN <br>
-                            Features: https://social.ora.cl/6016KoqQ4 <br>
-                            </p>
+                        <p>
+                           <strong>lets_be_next</strong> 님이 회원님의 게시물을
+						   <br>
+						   <div class="name">
+						   	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;좋아합니다.
+						   </div>
+                       </p>
                     </div>
-                    
                 </div>
-                <img src="images/post-image.jpeg" alt="java18">
-
-                <div class="post_footer">
-
-                    <span class="material-icons">chat</span>
-                    <span class="material-icons">repeat</span>
-                    <span class="material-icons">favorite_border</span>
-                    <span class="material-icons">file_upload</span>
-                    
-
-                </div>
-
             </div>
-
         </div>
-
         <div class="post">
             <div class="post_profile-image">
-                <img src="images/menu01.png" alt="java-logo">
-
-            </div>
-
-            <div class="post_body">
-                <div class="post_header">
-                    <div class="post_header-text">
-                        <h3>Java
-                            <span class="header-icon-section">
-                                <span class="material-icons post_badge">verified</span>@java
-                            </span>
-                        </h3>
-                    </div>
-
-                    <div class="post_header-discription">
-                        <p>Java 18 is now available! #Java18 #JDK18 #openjdk </p>
-                        <br>
-                        <p>Download now: https://social.ora.cl/6012KoqQ0 <br>
-                            Release notes: https://social.ora.cl/6013KoqQF <br>
-                            API Javadoc: https://social.ora.cl/6015KoqQN <br>
-                            Features: https://social.ora.cl/6016KoqQ4 <br>
-                            </p>
-                    </div>
-                    
-                </div>
-                <img src="images/post-image.jpeg" alt="java18">
-
-                <div class="post_footer">
-
-                    <span class="material-icons">chat</span>
-                    <span class="material-icons">repeat</span>
-                    <span class="material-icons">favorite_border</span>
-                    <span class="material-icons">file_upload</span>
-                    
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="post">
-            <div class="post_profile-image">
-                <img src="images/menu01.png" alt="java-logo">
-
-            </div>
+					<div class="user">
+					</div>
+				</div>
 
             <div class="post_body">
                 <div class="post_header">
@@ -350,32 +244,16 @@ $(function(){
                     </div>
 
                     <div class="post_header-discription">
-                        <p>Java 18 is now available! #Java18 #JDK18 #openjdk </p>
-                        <br>
-                        <p>Download now: https://social.ora.cl/6012KoqQ0 <br>
-                            Release notes: https://social.ora.cl/6013KoqQF <br>
-                            API Javadoc: https://social.ora.cl/6015KoqQN <br>
-                            Features: https://social.ora.cl/6016KoqQ4 <br>
-                            </p>
+                        <p>
+                          <strong>lets_be_next</strong> 님이 댓글을 남겼습니다.
+						  <div class="photo-frame">
+					        <img src="images/page-profile-image.png">
+					      </div>
+                       </p>
                     </div>
-                    
                 </div>
-                <img src="images/post-image.jpeg" alt="java18">
-
-                <div class="post_footer">
-
-                    <span class="material-icons">chat</span>
-                    <span class="material-icons">repeat</span>
-                    <span class="material-icons">favorite_border</span>
-                    <span class="material-icons">file_upload</span>
-                    
-
-                </div>
-
             </div>
-
         </div>
-
     </main>
     <!-- main section end -->
     
