@@ -7,7 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <title>BootStrap 01</title>
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -69,9 +70,45 @@ $(function(){
 	
 })
 </script>
-
+<script>
+	function toggleDropdown() {
+	    $('.dropdown').toggleClass('active');
+	}//toggleDropdown
     
-    
+    $(function() {
+       
+   	 // 클릭된 요소가 드롭다운 메뉴 또는 해당 텍스트인 경우 아무 작업도 하지 않음
+   	// 클릭된 요소가 드롭다운 메뉴가 아니라면 메뉴를 숨김
+   	$(document).on('click', function(e) {
+   	    var d = $('.dropdown'), t = $('.dropdown-text');
+   	    if (!$(e.target).closest('.dropdown, .dropdown-text').length) d.removeClass('active');
+   	  });//dropdown
+   
+	$('.post').hover(
+	       function() {
+	           // 마우스 호버 시 알림 삭제 및 차단 버튼 표시
+	           $(this).find('.post_actions').show();
+	       },
+	       function() {
+	           // 마우스 떠날 때 버튼 숨김
+	           $(this).find('.post_actions').hide();
+	       }
+	  );//post_body
+	
+	  $('.post').hover(
+	       function() {
+	           // 마우스 호버 시 알림 삭제 및 차단 버튼 표시
+	           $(this).find('.bi-x-circle').css('display', 'inline-block');
+	       },
+	       function() {
+	           // 마우스 떠날 때 버튼 숨김
+	           $(this).find('.bi-x-circle').css('display', 'none');
+	       }
+	  );//post_body
+	    
+    	
+    });//jquery
+</script>
 </head>
  <body>
  
@@ -123,9 +160,13 @@ $(function(){
 
 
  <main>
-        <div class="header">
+        <div class="header dropdown">
              <span class="material-icons" style="font-size: 35px;">notifications</span>
-             <span class="material-symbols-outlined" style="float: right; padding-top: 10px; font-size: 30px;">pending</span>
+             <span class="material-symbols-outlined dropdown-text" style="float: right; padding-top: 10px; font-size: 30px;" onclick="toggleDropdown()">pending</span>
+        	 <div class="dropdown-content" onclick="toggleDropdown()">
+		        <a href="#">v모두 읽은 상태로 표시</a>
+		        <a href="#">알림설정</a>
+		     </div>	
         </div>
 
         <div class="breadcrmb_div">
@@ -166,6 +207,7 @@ $(function(){
 						   	팔로우하기 시작했습니다.
 						   </div>
 						   <button class="followBtn">팔로우</button>
+						   <i class="bi bi-x-circle"></i>
                        </p>
                     </div>
                 </div>
@@ -195,6 +237,7 @@ $(function(){
 						   </div>
 						   <button class="followBtn">팔로우</button>
 						   <i class="bi bi-circle-fill"></i>
+						   <i class="bi bi-x-circle"></i>
                        </p>
                     </div>
                 </div>
@@ -222,6 +265,7 @@ $(function(){
 						   <div class="name">
 						   	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;좋아합니다.
 						   </div>
+						   <i class="bi bi-x-circle"></i>
                        </p>
                     </div>
                 </div>
@@ -247,8 +291,9 @@ $(function(){
                         <p>
                           <strong>lets_be_next</strong> 님이 댓글을 남겼습니다.
 						  <div class="photo-frame">
-					        <img src="images/page-profile-image.png">
+					        <a href=""><img src="images/page-profile-image.png"></a>
 					      </div>
+					      <i class="bi bi-x-circle"></i>
                        </p>
                     </div>
                 </div>

@@ -10,6 +10,16 @@ public class FController {
 	public String index() {
 		return "index";
 	}
+
+	@GetMapping("view")
+	public String view() {
+		return "view";
+	}
+
+	@GetMapping("notice_d")
+	public String notice_d() {
+		return "notice_d";
+	}
 	
 	
 	

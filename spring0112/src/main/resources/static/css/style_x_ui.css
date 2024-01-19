@@ -183,7 +183,7 @@ main::-webkit-scrollbar{
    border: 2px solid lightpink;
    overflow: hidden;
    position: relative;
-   left: 265px;
+   left: 255px;
    bottom: 50px;
    border-radius: 20px;
 }
@@ -214,6 +214,51 @@ main::-webkit-scrollbar{
     border-color: pink;
    
 	
+}
+
+
+/* 드롭다운 텍스트 스타일 */
+.dropdown-text {
+    float: right;
+    padding-top: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* 드롭다운 내용 스타일 (초기에는 숨김) */
+.dropdown-content {
+    display: none;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    z-index: 1;
+    top: 60px; /* 드롭다운 메뉴가 텍스트 아래로 나타나도록 조절 */
+    position: absolute;
+    left: 250px;
+}
+
+/* 드롭다운 내용의 링크 스타일 */
+.dropdown-content a {
+	font-size: 12px;
+    color: black;
+    width: 170px;
+    border-radius:5px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s, color 0.3s; /* 트랜지션 효과 추가 */
+}
+
+/* 드롭다운 아이템 호버 시 배경색과 글씨 색상 변경 */
+.dropdown-content a:hover {
+    background-color: #ddd; /* 호버 시 배경색 변경 */
+    color: #27c6be; /* 호버 시 글씨 색상 변경 */
+}
+
+/* 드롭다운이 열려 있을 때 스타일 */
+.dropdown.active .dropdown-content {
+    display: block;
 }
 
 .bi-circle-fill{
@@ -278,6 +323,23 @@ main::-webkit-scrollbar{
 .post_body{ 
     flex: 1;
     padding: 10px;
+    position: relative;
+    height: 90px;
+    width: 460px;
+}
+
+.post:hover {
+    background-color: #ddd; /* 호버 시 배경색 변경 */
+    color: #27c6be; /* 호버 시 글씨 색상 변경 */
+}
+
+.bi-x-circle{
+	font-size: 20px;
+	position: relative;
+    left: 330px;
+    bottom: 40px;
+    display: none; /* 처음에는 숨김 */
+	
 }
 
 .post_profile-image{
