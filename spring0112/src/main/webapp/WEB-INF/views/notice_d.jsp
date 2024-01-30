@@ -71,30 +71,8 @@ $(function(){
 })
 </script>
 <script>
-	function toggleDropdown() {
-	    $('.dropdown').toggleClass('active');
-	}//toggleDropdown
-    
-    $(function() {
+	$(function() {
        
-   	 // 클릭된 요소가 드롭다운 메뉴 또는 해당 텍스트인 경우 아무 작업도 하지 않음
-   	// 클릭된 요소가 드롭다운 메뉴가 아니라면 메뉴를 숨김
-   	$(document).on('click', function(e) {
-   	    var d = $('.dropdown'), t = $('.dropdown-text');
-   	    if (!$(e.target).closest('.dropdown, .dropdown-text').length) d.removeClass('active');
-   	  });//dropdown
-   
-	$('.post').hover(
-	       function() {
-	           // 마우스 호버 시 알림 삭제 및 차단 버튼 표시
-	           $(this).find('.post_actions').show();
-	       },
-	       function() {
-	           // 마우스 떠날 때 버튼 숨김
-	           $(this).find('.post_actions').hide();
-	       }
-	  );//post_body
-	
 	  $('.post').hover(
 	       function() {
 	           // 마우스 호버 시 알림 삭제 및 차단 버튼 표시
@@ -105,8 +83,6 @@ $(function(){
 	           $(this).find('.bi-x-circle').css('display', 'none');
 	       }
 	  );//post_body
-	    
-    	
     });//jquery
 </script>
 </head>
@@ -160,13 +136,9 @@ $(function(){
 
 
  <main>
-        <div class="header dropdown">
+        <div class="header">
              <span class="material-icons" style="font-size: 35px;">notifications</span>
-             <span class="material-symbols-outlined dropdown-text" style="float: right; padding-top: 10px; font-size: 30px;" onclick="toggleDropdown()">pending</span>
-        	 <div class="dropdown-content" onclick="toggleDropdown()">
-		        <a href="#">v모두 읽은 상태로 표시</a>
-		        <a href="#">알림설정</a>
-		     </div>	
+             <span class="material-symbols-outlined" style="float: right; padding-top: 10px; font-size: 30px;" >pending</span>
         </div>
 
         <div class="breadcrmb_div">
@@ -199,7 +171,7 @@ $(function(){
                         </h3>
                     </div>
 
-                    <div class="post_header-discription">
+                    <div class="post_header-discription ">
                         <p>
                            <strong>lets_be_next</strong> 님이 회원님을
 						   <br>
@@ -293,7 +265,7 @@ $(function(){
 						  <div class="photo-frame">
 					        <a href=""><img src="images/page-profile-image.png"></a>
 					      </div>
-					      <i class="bi bi-x-circle"></i>
+					      <i class="bi bi-x-circle" style="margin-top: -35px;"></i>
                        </p>
                     </div>
                 </div>

@@ -23,6 +23,11 @@ public class FController {
 	public String login() {
 		return "login";
 	}
+
+	@GetMapping("Insert")
+	public String Insert() {
+		return "Insert";
+	}
 	
 	//카카오로그인 
 	@GetMapping("/kaka")

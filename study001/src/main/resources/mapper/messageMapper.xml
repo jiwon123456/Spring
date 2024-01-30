@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- MemberMapper.java 연결 -->
+<mapper namespace="com.java.mapper.MessageMapper">
+	
+	<!-- 받은 쪽지 전체 가져오기 messCrossDto-->
+	<select id="receiveAll" resultMap="messCrossDto">
+		 select message.*, cross_user.name, cross_user.profile_img from message,cross_user where message.source_id = cross_user.user_id and message.target_id='aaa' order by message.created desc		 
+	</select>
+
+	<!-- 보낸 쪽지 전체 가져오기 messCrossDto-->
+	<select id="sendAll" resultMap="messCrossDto">
+		 select message.*, cross_user.name, cross_user.profile_img from message,cross_user where message.target_id = cross_user.user_id and message.source_id='aaa' order by message.created desc		 
+	</select>
+	
+	<!--resultMap 1.message선언 2.cross_user선언 3.합친것 선언 -->
+    <resultMap type="com.java.dto.MessCrossDto" id="messCrossDto">
+		<collection property="messageDto" resultMap="messageDtoMap" ></collection>
+		<collection property="cross_userDto" resultMap="cross_userDtoMap" ></collection>
+    </resultMap>
+     <!-- 1.message선언 -->
+    <resultMap type="com.java.dto.MessageDto" id="messageDtoMap">
+		<result column="msg_id" property="msg_id" />    
+		<result column="source_id" property="source_id" />    
+		<result column="target_id" property="target_id" />    
+		<result column="mcontent" property="mcontent" />    
+		<result column="checked" property="checked" />    
+		<result column="created" property="created" />    
+    </resultMap>
+     <!-- 2.cross_user선언 -->
+    <resultMap type="com.java.dto.Cross_userDto" id="cross_userDtoMap">
+		<result column="user_id" property="user_id" />    
+		<result column="name" property="name" />    
+		<result column="profile_img" property="profile_img" />    
+    </resultMap>
+</mapper>

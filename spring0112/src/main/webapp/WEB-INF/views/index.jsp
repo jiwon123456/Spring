@@ -7,7 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <title>BootStrap 01</title>
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -69,9 +70,76 @@ $(function(){
 	
 })
 </script>
+<script>
 
-    
-    
+	//첫번째 dropdown
+	function toggleDropdown() {
+	    $('.dropdown').toggleClass('active'); 
+	}//toggleDropdown
+
+    $(function() {
+   	 // 클릭된 요소가 드롭다운 메뉴 또는 해당 텍스트인 경우 아무 작업도 하지 않음
+   	// 클릭된 요소가 드롭다운 메뉴가 아니라면 메뉴를 숨김
+   	$(document).on('click', function(e) {
+   	    var d = $('.dropdown'), t = $('.dropdown-text');
+   	    if (!$(e.target).closest('.dropdown, .dropdown-text').length) d.removeClass('active');
+   	  });//dropdown
+   
+   	  $('.post').hover(
+   	        function() {
+   	            // 마우스 호버 시 알림 삭제 및 차단 버튼 표시
+   	            $(this).find('.bi-x-circle').css('display', 'inline-block');
+   	            $(this).find('.bi-x-circle').css('color', 'red');
+   	        },
+   	        function() {
+   	            // 마우스 떠날 때 버튼 숨김
+   	            $(this).find('.bi-x-circle').css('display', 'none');
+   	        }
+   	    ); // post_body
+   	
+    });//jquery
+   	 
+   	  
+    $(document).ready(function() {
+        var isAltMenuVisible = false; // .alt 메뉴가 보이는지 여부를 저장하는 변수
+
+        // Click event to hide the .alt menu when clicking outside of it
+        $(document).on('click', function(e) {
+            var dropdown = $('.alt');
+            if (!$(e.target).closest('.bi-x-circle, .alt').length) {
+                if (isAltMenuVisible) {
+                    $('.alt').css('display', 'none');
+                    $('.bi-x-circle').removeClass('hovered'); // hover 클래스 제거
+                    isAltMenuVisible = false; // .alt 메뉴가 감춰진 상태로 설정
+                }
+            }
+        });
+
+        // Click event for the bi-x-circle icon to toggle the dropdown
+        $('.bi-x-circle').on('click', function() {
+            var altMenu = $(this).siblings('.alt');
+            altMenu.toggle(); // 토글 메뉴 표시/감춤
+            $(this).toggleClass('hovered'); // hover 클래스 토글
+            isAltMenuVisible = !isAltMenuVisible; // .alt 메뉴 상태 업데이트
+        });
+
+        // Click event for the .alt menu to hide it
+        $('.alt').on('click', function(e) {
+            e.stopPropagation(); // .alt 메뉴를 클릭해도 document의 click 이벤트가 발생하지 않도록 함
+        });
+
+        // Click event for the "알림차단" option
+        $('.alt a:contains("알림차단"),.alt a:contains("알림삭제")').on('click', function() {
+            // Custom logic for 알림차단
+            $('.alt').css('display', 'none'); // 알림차단 클릭 시 메뉴 감추기
+            $('.bi-x-circle').removeClass('hovered'); // hover 클래스 제거
+            isAltMenuVisible = false; // .alt 메뉴가 감춰진 상태로 설정
+        });
+
+    });
+
+  
+</script>
 </head>
  <body>
  
@@ -123,9 +191,13 @@ $(function(){
 
 
  <main>
-        <div class="header">
+        <div class="header dropdown">
              <span class="material-icons" style="font-size: 35px;">notifications</span>
-             <span class="material-symbols-outlined" style="float: right; padding-top: 10px; font-size: 30px;">pending</span>
+             <span class="material-symbols-outlined dropdown-text" style="float: right; padding-top: 10px; font-size: 30px;" onclick="toggleDropdown()">pending</span>
+        	 <div class="dropdown-content" onclick="toggleDropdown()">
+		        <a href="#">v모두 읽은 상태로 표시</a>
+		        <a href="#">알림설정</a>
+		     </div>	
         </div>
 
         <div class="breadcrmb_div">
@@ -158,15 +230,19 @@ $(function(){
                         </h3>
                     </div>
 
-                    <div class="post_header-discription">
+                    <div class="post_header-discription ">
                         <p>
                            <strong>lets_be_next</strong> 님이 회원님을
-						   <br>
 						   <div class="name">
 						   	팔로우하기 시작했습니다.
 						   </div>
 						   <button class="followBtn">팔로우</button>
+						   <i class="bi bi-x-circle"></i>
                        </p>
+                       <div class="alt">
+					    <a href="#">알림삭제</a>
+					    <a href="#">알림차단</a>
+					  </div>
                     </div>
                 </div>
             </div>
@@ -195,7 +271,13 @@ $(function(){
 						   </div>
 						   <button class="followBtn">팔로우</button>
 						   <i class="bi bi-circle-fill"></i>
+						   <i class="bi bi-x-circle" id="toggleDropdownIcon"></i>
                        </p>
+                       <div class="alt" id="myDropdown">
+					    <a href="#">알림삭제</a>
+					    <a href="#">알림차단</a>
+					    
+					  </div>
                     </div>
                 </div>
             </div>
@@ -222,7 +304,12 @@ $(function(){
 						   <div class="name">
 						   	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;좋아합니다.
 						   </div>
+						    <i class="bi bi-x-circle" id="toggleDropdownIcon"></i>
                        </p>
+                       <div class="alt" id="myDropdown">
+					    <a href="#">알림삭제</a>
+					    <a href="#">알림차단</a>
+					  </div>
                     </div>
                 </div>
             </div>
@@ -247,9 +334,14 @@ $(function(){
                         <p>
                           <strong>lets_be_next</strong> 님이 댓글을 남겼습니다.
 						  <div class="photo-frame">
-					        <img src="images/page-profile-image.png">
+					        <a href=""><img src="images/page-profile-image.png"></a>
 					      </div>
+					       <i class="bi bi-x-circle" id="toggleDropdownIcon"></i>
                        </p>
+                       <div class="alt" id="myDropdown">
+					    <a href="#">알림삭제</a>
+					    <a href="#">알림차단</a>
+					  </div>
                     </div>
                 </div>
             </div>
